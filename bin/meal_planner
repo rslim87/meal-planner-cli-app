@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+#since it is not a ruby file the above line will tell the operaint system to run the program through Ruby
+
+require_relative '../lib/meal_planner'
+
+MealPlanner::CLI.new.call
