@@ -4,4 +4,4 @@ module MealPlanner
   # Your code goes here...
 end
 
-require_relative '../config/environment'
+require_relative '../config/environment.rb'
