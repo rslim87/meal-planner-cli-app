@@ -2,19 +2,19 @@
 
 class MealPlanner::Scraper
 
-	attr_accessor :url, :prep_time, :cook_time, :ingredients, :instructions
+	# attr_accessor :url
 
-	def initialize(url = nil)
-		@url = url
-	end
-	
+
+	# def initialize (url)
+	# 	@url = url
+	# end
 
 	#grab the index page
 	def self.get_breakfast
 		breakfast_dish = []
 		
 	doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
-	binding.pry
+	
 	breakfast_dish << doc.css('ol li')[12].text
 
 	breakfast_dish << doc.css('ol li')[14].text
@@ -34,13 +34,27 @@ class MealPlanner::Scraper
 		
 	end
 
-	def self.breakfast_dish_1
-		doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
-		page = doc.css('ol li')[12].children.attribute("href").text
-		docs = Nokogiri:HTML(open(page))
-		
+# 	def self.dish
+# 		# doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/recipe-whole-wheat-banana-pancakes-freeze-the-leftovers/"))
+# 		# page = doc.css('ol li')[12].children.attribute("href").text
+# 		# docs = Nokogiri::HTML(open(page))
+# 		dish = MealPlanner::Planner.new
+# 		doc = Nokogiri::HTML(open(dish.url))
+# 		dish.prep_time = doc.css("span.wprm-recipe-prep_time-minutes").text
+# 		dish.cook_time =  doc.css("span.wprm-recipe-cook_time-minutes").text 
+# 		#ingredients: 
+# 		dish.ingredients = doc.css("div.wprm-recipe-ingredient-group").text.gsub("\t", '').gsub("\n", ' ').split("  ")
+# 		#list.each {|item| puts item}
+# 		#instructions 
+# 		dish.instructions = doc.css("div.wprm-recipe-instruction-group").text.gsub("\t", '').gsub("\n", ' ').gsub("   ","").split(".")
+# 		dish
+# 		# step 2 count = 1
+# 		# 		ingredients.each do |item|
+# 		# 		puts "#{count}. #{item}"
+# 		# 		count = count + 1
+# 		# 		end
 
-end
+# end
 
 	#scrapes the index page for dishes
 
