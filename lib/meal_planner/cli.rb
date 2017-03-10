@@ -30,15 +30,9 @@ class MealPlanner::CLI
 		if user_input == "breakfast"
 			print_breakfast
 		elsif user_input == "lunch"
-			lunch
-		elsif dinner
-			dinner
-
-				
-			# when "lunch"
-			# 	lunch 
-			# when "dinner"
-			# 	dinner
+			print_lunch
+		elsif user_input == "dinner"
+			print_dinner
 			# else
 			# 	puts "Invalid entry. Please enter the meal you would like to see recipes for: breakfast, lunch, dinner.  If you are done with meal planning, please type exit."
 			end
@@ -74,8 +68,69 @@ class MealPlanner::CLI
 		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-egg-souffle/")
 		 		display_meal(meal)
 		 	end
+	end	
+
+#lunch will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
+	def print_lunch
+		puts "-------------------------------------------"
+		puts "Please see below for the list of dishes for lunch.  Please type the number for the dish which you would like the recipe for:"
+		puts " "
+		count = 1
+		MealPlanner::Scraper.get_lunch.each do |meal|
+			puts "#{count}. #{meal}"
+			count +=1 
+		end
+		puts " "
+		input = gets.to_i
+		
+			if input == 1
+				puts "-------------------------------------------"
+				puts "Whole Wheat Macacroni and Cheese"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-whole-wheat-macaroni-and-cheese/")
+		 		display_meal(meal)
+		 	elsif input == 2
+		 		puts "-------------------------------------------"
+		 		puts "Potato pancakes"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-vegetable-pancakes/")
+		 		display_meal(meal)
+		 	elsif input == 3
+		 		puts "-------------------------------------------"
+		 		puts "Lime Cilantro Quinoa Salad"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-lime-cilantro-quinoa-salad/")
+		 		display_meal(meal)
+		 	end
 	end
 
+#dinner will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
+	def print_dinner
+		puts "-------------------------------------------"
+		puts "Please see below for the list of dishes for dinner.  Please type the number for the dish which you would like the recipe for:"
+		puts " "
+		count = 1
+		MealPlanner::Scraper.get_dinner.each do |meal|
+			puts "#{count}. #{meal}"
+			count +=1 
+		end
+		puts " "
+		input = gets.to_i
+		
+			if input == 1
+				puts "-------------------------------------------"
+				puts "Whole Wheat Macacroni and Cheese"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-whole-wheat-macaroni-and-cheese/")
+		 		display_meal(meal)
+		 	elsif input == 2
+		 		puts "-------------------------------------------"
+		 		puts "Potato pancakes"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-vegetable-pancakes/")
+		 		display_meal(meal)
+		 	elsif input == 3
+		 		puts "-------------------------------------------"
+		 		puts "Lime Cilantro Quinoa Salad"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-lime-cilantro-quinoa-salad/")
+		 		display_meal(meal)
+		 	end
+	end
 
 	def display_meal(meal)
 		puts "Prep time: #{meal.prep_time} minutes"
@@ -93,79 +148,6 @@ class MealPlanner::CLI
 		
 	end
 
-	
-
-#lunch will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
-	def lunch
-		puts "Please see below for the list of dishes for lunch.  Please type the number for the dish which you would like the recipe for"
-		puts <<-DOC
-		1. Dish #1
-		2. Dish #2
-		3. Dish #3
-		DOC
-		user_input = gets.strip
-		case user_input
-			when "1"
-				puts "dish #1"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			when "2"
-				puts "dish #2"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			when "3"
-				puts "dish #3"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			end
-	end
-
-#dinner will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
-	def dinner
-		puts "Please see below for the list of dishes for lunch.  Please type the number for the dish which you would like the recipe for"
-		puts <<-DOC
-		1. Dish #1
-		2. Dish #2
-		3. Dish #3
-		DOC
-		user_input = gets.strip
-		case user_input
-			when "1"
-				puts "dish #1"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			when "2"
-				puts "dish #2"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			when "3"
-				puts "dish #3"
-				puts "prep time"
-				puts "cook time"
-				puts "servings"
-				puts "ingredients"
-				puts "instructions"
-			end
-	end
-
-	# def display_meal(meal)
-	# 	puts "#{meal.prep_time}"
-	# end
 
 #what happens when exit is typed.
 	def goodbye

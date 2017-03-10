@@ -11,27 +11,28 @@ class MealPlanner::Scraper
 
 	#grab the index page
 	def self.get_breakfast
-		breakfast_dish = []
-		
-	doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
+		breakfast_dish = []	
+		doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
 	
-	breakfast_dish << doc.css('ol li')[12].text
-
-	breakfast_dish << doc.css('ol li')[14].text
-	breakfast_dish << doc.css('ol li')[53].text.gsub("(perfect for brunch)","")
-	 breakfast_dish
-			# breakfast << item 1, item 2, item 3
-
-		#lunch item 1 : doc.css('ol li')[39].text
-		#lunch item 2 : doc.css('ol li')[46].text
-		#lunch item 3 : doc.css('ol li')[57].text
-		# lunch << item 1, item 2, item 3
+		breakfast_dish << doc.css('ol li')[12].text
+		breakfast_dish << doc.css('ol li')[14].text
+		breakfast_dish << doc.css('ol li')[53].text.gsub("(perfect for brunch)","")
+	 	breakfast_dish
 
 		#dinner item 1 : doc.css('ol li')[130].text
 		#dinner item 2 : doc.css('ol li')[144].text
 		#dinner item 3 : doc.css('ol li')[137].text
 		# dinner << item 1, item 2, item 3
 		
+	end
+
+	def self.get_lunch
+		lunch_dish = []
+		doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
+		lunch_dish << doc.css('ol li')[38].text
+		lunch_dish << doc.css('ol li')[46].text
+		lunch_dish << doc.css('ol li')[98].text
+		lunch_dish
 	end
 
 # 	def self.dish
