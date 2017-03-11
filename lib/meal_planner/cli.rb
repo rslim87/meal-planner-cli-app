@@ -1,31 +1,24 @@
 class MealPlanner::CLI
 
 	def call 
-			MealPlanner::Scraper
+		MealPlanner::Scraper
 		MealPlanner::Planner
 		welcome
-		options
-
-		#print_breakfast
-		
-		# print_breakfast
-		# display_meal(meal)
-	
-		
+		options	
 	end
 
 #Welcome user to meal_planner and its purpose
 
 	def welcome
 		puts "Welcome to meal planner.  Using this app will help you plan your meals for the day."
-		
+		puts "-------------------------------------------"
 	end
 
 #Layout options for the user
 	def options
 		# user_input = nil
 		# while user_input != "exit"
-		puts "Please enter the meal you would like to see recipes for: breakfast, lunch, dinner.  If you are done with meal planning, please type exit." 
+		puts "Please enter the meal you would like to see recipes for: breakfast, lunch, dinner." 
 		user_input = gets.downcase.strip
 		if user_input == "breakfast"
 			print_breakfast
@@ -42,7 +35,8 @@ class MealPlanner::CLI
 
 #breakfast will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
 	def print_breakfast
-		puts "Please see below for the list of dishes for breakfast.  Please type the number for the dish which you would like the recipe for:"
+		puts "-------------------------------------------"
+		puts "Please enter the number for the dish which you would like the recipe for:"
 		puts " "
 		count = 1
 		MealPlanner::Scraper.get_breakfast.each do |meal|
@@ -73,7 +67,7 @@ class MealPlanner::CLI
 #lunch will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
 	def print_lunch
 		puts "-------------------------------------------"
-		puts "Please see below for the list of dishes for lunch.  Please type the number for the dish which you would like the recipe for:"
+		puts "Please enter the number for the dish which you would like the recipe for:"
 		puts " "
 		count = 1
 		MealPlanner::Scraper.get_lunch.each do |meal|
@@ -104,7 +98,7 @@ class MealPlanner::CLI
 #dinner will first show options to user of dishes where the recipes are available. Once user picks that dish, that dish recipe will be shown to user
 	def print_dinner
 		puts "-------------------------------------------"
-		puts "Please see below for the list of dishes for dinner.  Please type the number for the dish which you would like the recipe for:"
+		puts "Please enter the number for the dish which you would like the recipe for:"
 		puts " "
 		count = 1
 		MealPlanner::Scraper.get_dinner.each do |meal|
@@ -116,18 +110,18 @@ class MealPlanner::CLI
 		
 			if input == 1
 				puts "-------------------------------------------"
-				puts "Whole Wheat Macacroni and Cheese"
-		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-whole-wheat-macaroni-and-cheese/")
+				puts "Almond encrusted fish"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-almond-encrusted-fish-with-an-easy-buerre-blanc-sauce/")
 		 		display_meal(meal)
 		 	elsif input == 2
 		 		puts "-------------------------------------------"
-		 		puts "Potato pancakes"
-		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-vegetable-pancakes/")
+		 		puts "Prosciutto wrapped scallops"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-proscuitto-wrapped-scallops/")
 		 		display_meal(meal)
 		 	elsif input == 3
 		 		puts "-------------------------------------------"
-		 		puts "Lime Cilantro Quinoa Salad"
-		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-lime-cilantro-quinoa-salad/")
+		 		puts "Chicken and Cheese Tostadas"
+		 		meal = MealPlanner::Planner.create("https://www.100daysofrealfood.com/recipe-chicken-and-cheese-tostadas/")
 		 		display_meal(meal)
 		 	end
 	end

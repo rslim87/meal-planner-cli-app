@@ -2,14 +2,7 @@
 
 class MealPlanner::Scraper
 
-	# attr_accessor :url
-
-
-	# def initialize (url)
-	# 	@url = url
-	# end
-
-	#grab the index page
+	#grab the dishes from the index page
 	def self.get_breakfast
 		breakfast_dish = []	
 		doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
@@ -19,11 +12,6 @@ class MealPlanner::Scraper
 		breakfast_dish << doc.css('ol li')[53].text.gsub("(perfect for brunch)","")
 	 	breakfast_dish
 
-		#dinner item 1 : doc.css('ol li')[130].text
-		#dinner item 2 : doc.css('ol li')[144].text
-		#dinner item 3 : doc.css('ol li')[137].text
-		# dinner << item 1, item 2, item 3
-		
 	end
 
 	def self.get_lunch
@@ -34,6 +22,16 @@ class MealPlanner::Scraper
 		lunch_dish << doc.css('ol li')[98].text
 		lunch_dish
 	end
+
+	def self.get_dinner
+		dinner_dish = []
+		doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/real-food-resources/"))
+		dinner_dish << doc.css('ol li')[130].text
+		dinner_dish << doc.css('ol li')[144].text
+		dinner_dish << doc.css('ol li')[157].text
+		dinner_dish
+	end
+
 
 # 	def self.dish
 # 		# doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/recipe-whole-wheat-banana-pancakes-freeze-the-leftovers/"))
@@ -61,14 +59,6 @@ class MealPlanner::Scraper
 
 
 
-	#scrapes individual dish page for recipe
-	# def get_recipes
-	# 	self.get_page
-	# end
-
-
-
-
 	# def get_recipes
 		# doc = Nokogiri::HTML(open(""))
 		#Breakfast
@@ -87,24 +77,8 @@ class MealPlanner::Scraper
 		# 		end
 
 	# end
-#breakfast item 1 : doc.css('ol li')[12].text
-#breakfast item 2 : doc.css('ol li')[14].text
-#breakfast item 3 : doc.css('ol li')[53].text.gsub("(perfect for brunch)","")
-
-#lunch item 1 : doc.css('ol li')[39].text
-#lunch item 2 : doc.css('ol li')[46].text
-#lunch item 3 : doc.css('ol li')[57].text
-
-#dinner item 1 : doc.css('ol li')[130].text
-#dinner item 2 : doc.css('ol li')[144].text
-#dinner item 3 : doc.css('ol li')[137].text
 
 
-# def get_page
-# 	doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/recipe-proscuitto-wrapped-scallops/"))
-# 	binding.pry
-# end
-# end
 
 # Scraper.new.get_page
 
@@ -122,9 +96,5 @@ class MealPlanner::Scraper
 # 		puts "#{count}. #{item}"
 # 		count = count + 1
 # 		end
-
-
-
-
 	
 end

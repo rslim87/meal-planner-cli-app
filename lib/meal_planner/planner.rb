@@ -31,26 +31,5 @@ class MealPlanner::Planner
 		meal
 	end
 
-# 	def self.dish(url)
-# 		# doc = Nokogiri::HTML(open("https://www.100daysofrealfood.com/recipe-whole-wheat-banana-pancakes-freeze-the-leftovers/"))
-# 		# page = doc.css('ol li')[12].children.attribute("href").text
-# 		# docs = Nokogiri::HTML(open(page))
-	
-# 		doc = Nokogiri::HTML(open(url))
-# 		dish.prep_time = doc.css("span.wprm-recipe-prep_time-minutes").text
-# 		dish.cook_time =  doc.css("span.wprm-recipe-cook_time-minutes").text 
-# 		#ingredients: 
-# 		dish.ingredients = doc.css("div.wprm-recipe-ingredient-group").text.gsub("\t", '').gsub("\n", ' ').split("  ")
-# 		#list.each {|item| puts item}
-# 		#instructions 
-# 		dish.instructions = doc.css("div.wprm-recipe-instruction-group").text.gsub("\t", '').gsub("\n", ' ').gsub("   ","").split(".")
-# 		dish
-		# step 2 count = 1
-		# 		ingredients.each do |item|
-		# 		puts "#{count}. #{item}"
-		# 		count = count + 1
-		# 		end
-
-# end
 
 end
